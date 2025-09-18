@@ -1,6 +1,12 @@
 ALPHABET = "abcdefghijklmnopqrstuvwxyz"
 
 def cleanKey(key):
+    """
+    Deduplicates elements in an iterable
+
+    Args:
+        key(iterable): value to deduplicate
+    """
     lettersInKey = set() # create an empty set that will contain the letters we've used
     keyOut = '' # empty string to return
     for i in key: # for every letter in the submitted key...
@@ -30,11 +36,11 @@ def encode(toEncode:str , outputLoc:str , encodePattern:str):
                 if(letterIndex != -1): # if it exists in the set (ie is a letter)
                     foundLetter = encodePattern[letterIndex] # match the found index
                     out += foundLetter.upper() if upper else foundLetter # ternary to preserve case
-                else: 
+                else:
                     out += i # add the punctuation or space
             tW.write(out) # write that jawn to the output file
 
-def decode(toEncode:str , outputLoc:str , encodePattern:str):
+def decode(toEncode:str , outputLoc:str , encodePattern:str , originalPattern = ALPHABET):
     """
     decodes a textfile using encodePattern
     
@@ -42,6 +48,7 @@ def decode(toEncode:str , outputLoc:str , encodePattern:str):
         toEncode(str): location of txt file to decode
         outputLoc(str): location to write decoded txt
         encodePattern(str): 26 character long string to substitute by
+        [Optional] originalPattern(str): defaults to ALPHABET, but needs to be specified sometimes
     """
     if(len(cleanKey(encodePattern)) != 26 or cleanKey(encodePattern) != encodePattern): # make sure encodePattern is the right length
         raise ValueError("encodePattern must be exactly 26 characters long with no duplicated letters")
@@ -55,6 +62,6 @@ def decode(toEncode:str , outputLoc:str , encodePattern:str):
                 if(letterIndex != -1): # if it exists in the set (ie is a letter)
                     foundLetter = ALPHABET[letterIndex] # match the found index
                     out += foundLetter.upper() if upper else foundLetter # ternary to preserve case
-                else: 
+                else:
                     out += i # add the punctuation or space
             tW.write(out) # write that jawn to the output file

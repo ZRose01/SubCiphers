@@ -1,4 +1,12 @@
 import cipherTools
 
-cipherTools.encode('read.txt' , 'encoded.txt' , "defghijklmnopqrstuvwxyzabc")
-cipherTools.decode('encoded.txt' , 'decoded.txt' , "defghijklmnopqrstuvwxyzabc")
+def encodeKeyword(cipher , toEncodeLoc = 'read.txt' , toWriteLoc = 'encoded.txt'):
+    cipher = cipherTools.cleanKey(cipher + cipherTools.ALPHABET)
+    print(cipher)
+    cipherTools.encode(toEncodeLoc , toWriteLoc , cipher)
+
+def decodeKeyword(cipher , toDecodeLoc = 'encoded.txt' , toWriteLoc = 'decoded.txt'):
+    cipher = cipherTools.cleanKey(cipher + cipherTools.ALPHABET)
+    cipherTools.decode(toDecodeLoc , toWriteLoc , cipher)
+
+encodeKeyword('humongouschungusimgooningmyshitrn')
