@@ -60,7 +60,7 @@ def decode(toEncode:str , outputLoc:str , encodePattern:str , originalPattern = 
                 upper = i.isupper() # remember if the character is uppercase
                 letterIndex = encodePattern.find(i.lower()) # find the index in the lowercase set
                 if(letterIndex != -1): # if it exists in the set (ie is a letter)
-                    foundLetter = ALPHABET[letterIndex] # match the found index
+                    foundLetter = originalPattern[letterIndex] # match the found index
                     out += foundLetter.upper() if upper else foundLetter # ternary to preserve case
                 else:
                     out += i # add the punctuation or space
