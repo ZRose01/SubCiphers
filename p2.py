@@ -7,6 +7,8 @@ def encodeKeyword(cipher , toEncodeLoc = 'read.txt' , toWriteLoc = 'encoded.txt'
 
 def decodeKeyword(cipher , toDecodeLoc = 'encoded.txt' , toWriteLoc = 'decoded.txt'):
     cipher = cipherTools.cleanKey(cipher + cipherTools.ALPHABET)
+    print(cipher)
     cipherTools.decode(toDecodeLoc , toWriteLoc , cipher)
 
-encodeKeyword('humongouschungusimgooningmyshitrn')
+encodeKeyword('amongus')
+decodeKeyword('amongus')

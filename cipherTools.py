@@ -24,6 +24,7 @@ def encode(toEncode:str , outputLoc:str , encodePattern:str):
         outputLoc(str): location to write encoded txt
         encodePattern(str): 26 character long string to substitute by
     """
+    print(encodePattern)
     if(len(cleanKey(encodePattern)) != 26 or cleanKey(encodePattern) != encodePattern): # make sure encodePattern is the right length
         raise ValueError("encodePattern must be exactly 26 characters long with no duplicated letters")
     with open(toEncode , "r") as tR:
@@ -50,6 +51,8 @@ def decode(toEncode:str , outputLoc:str , encodePattern:str , originalPattern = 
         encodePattern(str): 26 character long string to substitute by
         [Optional] originalPattern(str): defaults to ALPHABET, but needs to be specified sometimes
     """
+    print(originalPattern)
+    print(encodePattern)
     if(len(cleanKey(encodePattern)) != 26 or cleanKey(encodePattern) != encodePattern): # make sure encodePattern is the right length
         raise ValueError("encodePattern must be exactly 26 characters long with no duplicated letters")
     with open(toEncode , "r") as tR:
